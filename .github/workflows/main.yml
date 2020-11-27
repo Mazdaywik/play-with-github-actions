@@ -33,7 +33,7 @@ jobs:
           gcc --version
           clang --version
           call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-          cl --version
+          cl /help
         shell: cmd
 
       - name: Print the PATH
