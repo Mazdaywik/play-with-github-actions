@@ -43,8 +43,17 @@ jobs:
       - name: Print the PATH
         run: python .github/workflows/printenv.py
 
-      - name: Ченим!
-        run: exit /b 0
+      - name: Компилируем и запускаем (MSVC)!
+        run: |
+          call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+          cl main.cpp
+          main.exe
+        shell: cmd
+
+      - name: Компилируем и запускаем (GCC)!
+        run: |
+          g++ main.cpp
+          a.exe
         shell: cmd
 
   build-posix:
@@ -72,3 +81,8 @@ jobs:
 
       - name: Print the PATH
         run: python .github/workflows/printenv.py
+
+      - name: Компилируем и запускаем (GCC)!
+        run: |
+          clang main.cpp
+          ./a.out
