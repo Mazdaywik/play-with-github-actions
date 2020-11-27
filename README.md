@@ -4,4 +4,4 @@
 [![badge1][img]][wf]
 
 [img]: https://github.com/Mazdaywik/play-with-github-actions/workflows/CI/badge.svg
-[wf]: https://github.com/Mazdaywik/play-with-github-actions/actions?query=workflow%3ACI
+[wf]: https://github.com/Mazdaywik/play-with-github-actions/actions?query=workflow:CI
