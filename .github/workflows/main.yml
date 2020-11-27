@@ -33,7 +33,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo PATH
-          echo %PATH%|sed "s/:/\n/g"
+          echo %PATH%|sed "s/;/\n/g"
         shell: cmd
 
   build-posix:
@@ -58,5 +58,5 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo PATH
-          echo $PATH | sed 's/:/\n/g'
+          echo $PATH | sed 's/:/\\n/g'
         shell: bash
