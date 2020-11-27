@@ -43,6 +43,10 @@ jobs:
       - name: Print the PATH
         run: python .github/workflows/printenv.py
 
+      - name: Ломаем!
+        run: exit /b 1
+        shell: cmd
+
   build-posix:
     strategy:
       matrix:
