@@ -36,6 +36,9 @@ jobs:
           echo %PATH%|sed "s/;/\n/g"
         shell: cmd
 
+      - name: Print the PATH
+        run: python .github/workflows/printenv.py
+
   build-posix:
     strategy:
       matrix:
@@ -60,3 +63,6 @@ jobs:
           echo PATH
           echo $PATH | sed 's/:/\\n/g'
         shell: bash
+
+      - name: Print the PATH
+        run: python .github/workflows/printenv.py
