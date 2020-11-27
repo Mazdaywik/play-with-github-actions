@@ -39,6 +39,10 @@ jobs:
       - name: Print the PATH
         run: python .github/workflows/printenv.py
 
+      - name: Print UNAME in BASH
+        run: uname -a
+        shell: bash
+
       - name: Компилируем и запускаем (MSVC)!
         run: |
           call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
@@ -77,6 +81,10 @@ jobs:
 
       - name: Print the PATH
         run: python .github/workflows/printenv.py
+
+      - name: Print UNAME in BASH
+        run: uname -a
+        shell: bash
 
       - name: Компилируем и запускаем (GCC)!
         run: |
