@@ -49,7 +49,7 @@ jobs:
       - name: Компилируем и запускаем (GCC)!
         run: |
           g++ main.cpp
-          ./a.out ${{ matrix.os }}
+          ./a.out ${{ matrix.os }}.out || ./a.exe ${{ matrix.os }}.exe
         shell: bash
 
       - name: Компилируем и запускаем (Clang)!
