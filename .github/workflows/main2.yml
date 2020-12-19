@@ -1,0 +1,97 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI2
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-windows:
+    strategy:
+      matrix:
+        a: [ A, AA ]
+
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          gcc --version
+          clang --version
+          call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+          cl /help
+        shell: cmd
+
+      - name: Print the PATH
+        run: python .github/workflows/printenv.py
+
+      - name: Print UNAME in BASH
+        run: uname -a
+        shell: bash
+
+      - name: Компилируем и запускаем (MSVC)!
+        run: |
+          call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+          cl main.cpp
+          main.exe ${{ matrix.a }}
+        shell: cmd
+
+      - name: Компилируем и запускаем (GCC)!
+        run: |
+          g++ main.cpp
+          a.exe ${{ matrix.a }}
+        shell: cmd
+
+  build-posix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo "Hello," world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          gcc --version
+          clang --version
+        shell: bash
+
+      - name: Print the PATH
+        run: python .github/workflows/printenv.py
+
+      - name: Print UNAME in BASH
+        run: uname -a
+        shell: bash
+
+      - name: Компилируем и запускаем (GCC)!
+        run: |
+          g++ main.cpp
+          ./a.out ${{ matrix.os }}
+
+      - name: Компилируем и запускаем (Clang)!
+        run: |
+          clang++ main.cpp
+          ./a.out ${{ matrix.os }}
