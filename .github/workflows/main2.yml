@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI2
+name: CI-posix
 
 # Controls when the action will run. 
 on:
@@ -15,51 +15,10 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build-windows:
-    strategy:
-      matrix:
-        a: [ A, AA ]
-
-    runs-on: windows-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          gcc --version
-          clang --version
-          call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-          cl /help
-        shell: cmd
-
-      - name: Print the PATH
-        run: python .github/workflows/printenv.py
-
-      - name: Print UNAME in BASH
-        run: uname -a
-        shell: bash
-
-      - name: Компилируем и запускаем (MSVC)!
-        run: |
-          call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-          cl main.cpp
-          main.exe ${{ matrix.a }}
-        shell: cmd
-
-      - name: Компилируем и запускаем (GCC)!
-        run: |
-          g++ main.cpp
-          a.exe ${{ matrix.a }}
-        shell: cmd
-
   build-posix:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -71,6 +30,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo "Hello," world!
+        shell: bash
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -90,8 +50,10 @@ jobs:
         run: |
           g++ main.cpp
           ./a.out ${{ matrix.os }}
+        shell: bash
 
       - name: Компилируем и запускаем (Clang)!
         run: |
-          clang++ main.cpp
-          ./a.out ${{ matrix.os }}
+          clang++ main.cpp || g++ main.cpp
+          ./a.out ${{ matrix.os }}.out || ./a.exe ${{ matrix.os }}.exe
+        shell: bash
