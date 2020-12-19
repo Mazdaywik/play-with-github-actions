@@ -37,6 +37,7 @@ jobs:
         run: |
           gcc --version
           clang --version
+          exit 0
         shell: bash
 
       - name: Print the PATH
