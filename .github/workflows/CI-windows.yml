@@ -34,6 +34,26 @@ jobs:
         run: uname -a
         shell: bash
 
+      - name: Unzip (BASH)?
+        run: unzip || echo FAIL
+        shell: bash
+
+      - name: Unzip (cmd)?
+        run: unzip || echo FAIL
+        shell: cmd
+
+      - name: Unzip by tar?
+        run: tar -xf test.zip || echo FAIL
+        shell: cmd
+
+      - name: Unzip by PowerShell
+        run: Expand-Archive -Path 'test.zip' -DestinationPath '.'
+        shell: powershell
+
+      - name: dir
+        run: dir
+        shell: cmd
+
       - name: Компилируем и запускаем (MSVC)!
         run: |
           call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
