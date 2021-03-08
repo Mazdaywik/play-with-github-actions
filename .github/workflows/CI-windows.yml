@@ -78,7 +78,7 @@ jobs:
       - name: Сохраняем exe-шники
         uses: actions/upload-artifact@v2
         with:
-          name: executables
+          name: executables-${{ matrix.a }}
           path: |
             main.exe
             a.exe
