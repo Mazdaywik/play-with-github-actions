@@ -43,7 +43,10 @@ jobs:
         shell: cmd
 
       - name: Unzip by tar?
-        run: tar -xf test.zip || echo FAIL
+        run: |
+          tar -xf test.zip || echo FAIL
+          dir
+          erase test.txt
         shell: cmd
 
       - name: Unzip by PowerShell
