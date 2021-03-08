@@ -66,7 +66,7 @@ jobs:
         run: |
           md refal5
           cd refal5
-          curl -L ftp://ftp.botik.ru/pub/local/scp/refal5/bin/ref5_041029_bin_winNT.zip
+          curl -O ftp://ftp.botik.ru/pub/local/scp/refal5/bin/ref5_041029_bin_winNT.zip
           tar xvf ref5_041029_bin_winNT.zip
           refc test.ref
           echo 100+100 | refgo test.rsl
@@ -92,3 +92,4 @@ jobs:
           path: |
             main.exe
             a.exe
+            refal5/test.rsl
