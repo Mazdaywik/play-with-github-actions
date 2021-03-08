@@ -35,27 +35,32 @@ jobs:
         shell: bash
 
       - name: Unzip (BASH)?
-        run: unzip || echo FAIL
+        run: |
+          unzip test.zip
+          ls -l
+          rm test.txt
         shell: bash
 
-      - name: Unzip (cmd)?
-        run: unzip || echo FAIL
+      - name: Unzip (cmd)
+        run: |
+          unzip test.zip
+          dir
+          erase test.txt
         shell: cmd
 
-      - name: Unzip by tar?
+      - name: Unzip by tar
         run: |
-          tar -xf test.zip || echo FAIL
+          tar -xvf test.zip || echo FAIL
           dir
           erase test.txt
         shell: cmd
 
       - name: Unzip by PowerShell
-        run: Expand-Archive -Path 'test.zip' -DestinationPath '.'
+        run: |
+          Expand-Archive -Path 'test.zip' -DestinationPath '.'
+          dir
+          erase test.txt
         shell: powershell
-
-      - name: dir
-        run: dir
-        shell: cmd
 
       - name: Компилируем и запускаем (MSVC)!
         run: |
