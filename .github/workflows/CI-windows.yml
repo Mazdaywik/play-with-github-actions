@@ -79,4 +79,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: executables
-          path: main.exe a.exe
+          path: |
+            main.exe
+            a.exe
