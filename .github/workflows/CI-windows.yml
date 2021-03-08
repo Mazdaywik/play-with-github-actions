@@ -62,6 +62,16 @@ jobs:
           erase test.txt
         shell: powershell
 
+      - name: Curl Refal-5 PZ
+        run: |
+          md refal5
+          cd refal5
+          curl -L ftp://ftp.botik.ru/pub/local/scp/refal5/bin/ref5_041029_bin_winNT.zip
+          tar xvf ref5_041029_bin_winNT.zip
+          refc test.ref
+          echo 100+100 | refgo test.rsl
+        shell: cmd
+
       - name: Компилируем и запускаем (MSVC)!
         run: |
           call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
