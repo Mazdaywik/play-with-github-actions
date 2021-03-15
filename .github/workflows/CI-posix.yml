@@ -48,7 +48,7 @@ jobs:
 
       - name: Компилируем и запускаем (GCC)!
         run: |
-          g++ main.cpp
+          g++ main.cpp -ldl
           ./a.out ${{ matrix.os }}.out || ./a.exe ${{ matrix.os }}.exe
         shell: bash
 
