@@ -85,9 +85,9 @@ jobs:
           cd C:\
           dir
           echo *.a
-          dir /b /s *.a
+          dir /b /s *.a > d:_a.lst
           echo libdl.*
-          dir /b /s libdl.*
+          dir /b /s libdl.* > d:libdl_.lst
         shell: cmd
 
       - name: Компилируем и запускаем (GCC)!
@@ -104,3 +104,4 @@ jobs:
             main.exe
             a.exe
             refal5/test.rsl
+            *.lst
