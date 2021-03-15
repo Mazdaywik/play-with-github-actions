@@ -81,9 +81,11 @@ jobs:
 
       - name: Ищем libdl
         run: |
+          C:
           cd C:\ProgramData\Chocolatey
           dir /b /s libdl.*
           dir
+          C:
           cd C:\Program Files\Git
           dir /b /s libdl.*
           dir
