@@ -82,13 +82,12 @@ jobs:
       - name: Ищем libdl
         run: |
           C:
-          cd C:\ProgramData\Chocolatey
-          dir /b /s libdl.*
+          cd C:\
           dir
-          C:
-          cd C:\Program Files\Git
+          echo *.a
+          dir /b /s *.a
+          echo libdl.*
           dir /b /s libdl.*
-          dir
         shell: cmd
 
       - name: Компилируем и запускаем (GCC)!
