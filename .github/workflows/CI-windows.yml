@@ -79,6 +79,14 @@ jobs:
           main.exe ${{ matrix.a }}
         shell: cmd
 
+      - name: Ищем libdl
+        run: |
+          cd C:\ProgramData\Chocolatey
+          dir /b /s libdl.*
+          cd C:\Program Files\Git
+          dir /b /s libdl.*
+        shell: cmd
+
       - name: Компилируем и запускаем (GCC)!
         run: |
           g++ main.cpp
