@@ -83,8 +83,10 @@ jobs:
         run: |
           cd C:\ProgramData\Chocolatey
           dir /b /s libdl.*
+          dir
           cd C:\Program Files\Git
           dir /b /s libdl.*
+          dir
         shell: cmd
 
       - name: Компилируем и запускаем (GCC)!
