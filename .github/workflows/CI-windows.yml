@@ -18,7 +18,8 @@ jobs:
   build-windows:
     strategy:
       matrix:
-        a: [ A, AA ]
+#        a: [ A, AA ]
+        a: [ A ]
 
     runs-on: windows-latest
 
