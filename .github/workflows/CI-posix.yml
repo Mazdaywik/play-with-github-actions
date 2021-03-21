@@ -39,6 +39,12 @@ jobs:
           clang --version || :
         shell: bash
 
+      - name: Show directory separator
+        run: |
+          SEP=/
+          echo $SEP
+        shell: bash
+
       - name: Print the PATH
         run: python .github/workflows/printenv.py
 
