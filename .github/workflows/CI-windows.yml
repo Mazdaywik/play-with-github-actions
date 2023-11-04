@@ -75,7 +75,7 @@ jobs:
 
       - name: List of C:\
         run: |
-          dir C:\ /b /s *.bat *.cmd
+          dir C:\*.bat C:\*.cmd /b /s
         shell: cmd
 
       - name: Компилируем и запускаем (MSVC)!
