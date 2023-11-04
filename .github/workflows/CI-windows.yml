@@ -73,15 +73,15 @@ jobs:
           echo 100+100 | refgo test.rsl
         shell: cmd
 
-      - name: List of C:/Program Files (x86)/Microsoft Visual Studio
+      - name: List of C:/Program Files (x86)
         run: |
-          cd "C:\Program Files (x86)\Microsoft Visual Studio"
+          cd "C:\Program Files (x86)"
           dir /b /s *.bat *.cmd
         shell: cmd
 
-      - name: List of C:/Program Files/Microsoft Visual Studio
+      - name: List of C:/Program Files
         run: |
-          cd "C:\Program Files\Microsoft Visual Studio"
+          cd "C:\Program Files"
           dir /b /s *.bat *.cmd
         shell: cmd
 
