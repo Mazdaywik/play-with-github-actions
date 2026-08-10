@@ -19,11 +19,11 @@ jobs:
     strategy:
       matrix:
         os:
-          ubuntu-latest
-          macos-latest
-          windows-latest
-          ubuntu-24.04-arm
-          windows-11-arm
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+          - ubuntu-24.04-arm
+          - windows-11-arm
 
     runs-on: ${{ matrix.os }}
 
